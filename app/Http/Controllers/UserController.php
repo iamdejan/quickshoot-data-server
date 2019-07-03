@@ -52,23 +52,56 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //
+        $response = new GenericResponse();
+        try {
+            $id = intval($id);
+            $user = User::findOrFail($id);
+            $response->setResult($user);
+            $response->setSuccess(true);
+        } catch (Exception $exception) {
+            $response->setSuccess(false);
+            $response->setResult(null);
+            $response->setMessage($exception->getMessage());
+        }
+
+        return response()->json($response, 200, ["Content-Type" => "application/json"]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $response = new GenericResponse();
+        try {
+            $id = intval($id);
+            $user = User::where("id", $id)->update([
+                "name" => $request->input("name"),
+                "win_count" => intval($request->input("win_count")),
+                "lose_count" => intval($request->input("lose_count")),
+                "fastest_time" => intval("fastest_time")
+            ]);
+            $response->setResult($user);
+            $response->setSuccess(true);
+        } catch (Exception $exception) {
+            $response->setSuccess(false);
+            $response->setResult(null);
+            $response->setMessage($exception->getMessage());
+        }
+
+        return response()->json($response, 200, ["Content-Type" => "application/json"]);
     }
 
     public function destroy($id)
     {
+        $response = new GenericResponse();
+        try {
+            $id = intval($id);
+            $user = User::findOrFail($id);
+            $user->delete();
+            unset($user);
+        } catch (Exception $exception) {
+            $response->setSuccess(false);
+            $response->setResult(null);
+            $response->setMessage($exception->getMessage());
+        }
         return response()->json(null, 204);
     }
 }
