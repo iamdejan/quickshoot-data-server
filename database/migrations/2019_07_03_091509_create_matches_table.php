@@ -17,6 +17,8 @@ class CreateMatchesTable extends Migration
             $table->bigIncrements('id');
             $table->integer("contestant_count");
             $table->timestamps();
+
+            $table->index("created_at");
         });
     }
 
