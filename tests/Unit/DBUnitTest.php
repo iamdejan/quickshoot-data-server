@@ -15,6 +15,6 @@ class DBUnitTest extends TestCase
      */
     public function testExample()
     {
-        $this->assertEquals("quickshoot-party-data-server", config("database.connections.mysql.database"));
+        $this->assertEquals("quickshoot-party-data-server", config("database.connections.pgsql.database"));
     }
 }
