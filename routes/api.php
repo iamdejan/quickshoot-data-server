@@ -5,3 +5,9 @@ Route::get("/", function() {
 });
 
 Route::post("/users/create", "UserController@store");
+
+Route::get("/users/{id}", "UserController@show");
+
+Route::post("/users/{id}/update", "UserController@update");
+
+Route::get("/users/{id}/delete", "UserController@destroy");

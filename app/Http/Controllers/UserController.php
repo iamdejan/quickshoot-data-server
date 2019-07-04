@@ -97,11 +97,12 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->delete();
             unset($user);
+            $response->setResult(null);
         } catch (Exception $exception) {
             $response->setSuccess(false);
             $response->setResult(null);
             $response->setMessage($exception->getMessage());
         }
-        return response()->json(null, 204);
+        return response()->json($response, 200);
     }
 }
