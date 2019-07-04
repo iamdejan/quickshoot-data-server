@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string("name")->nullable(false);
             $table->integer("win_count");
             $table->integer("lose_count");
-            $table->decimal("fastest_time", 10, 3);
+            $table->decimal("fastest_time", 15, 3);
             $table->timestamps();
         });
     }
