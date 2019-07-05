@@ -4,6 +4,8 @@ Route::get("/", function() {
     return response()->json(["message" => "Hello world"], 200);
 });
 
+Route::get("/users", "UserController@index");
+
 Route::post("/users/create", "UserController@store");
 
 Route::get("/users/{id}", "UserController@show");
