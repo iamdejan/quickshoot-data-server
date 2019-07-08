@@ -9,6 +9,6 @@ class User extends Model
     protected $guarded = [];
 
     public function matches() {
-        return $this->belongsToMany("App\Match")->withPivot("shoot_time");
+        return $this->belongsToMany("App\Room")->withPivot("shoot_time");
     }
 }
