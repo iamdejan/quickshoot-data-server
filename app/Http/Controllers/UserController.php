@@ -56,6 +56,8 @@ class UserController extends Controller
     {
         $response = new GenericResponse();
         try {
+            AssertUtil::notNull($id, "id should not be blank!");
+
             $id = intval($id);
             $user = User::findOrFail($id);
             $response->setResult($user);
