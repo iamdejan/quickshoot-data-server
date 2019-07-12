@@ -14,6 +14,12 @@ class AssertUtil
         static::isTrue(isset($variable) && $variable != null, $errorMessage);
     }
 
+    public static function notBlank($variable, string $errorMessage) {
+        static::notNull($variable, $errorMessage);
+        static::isTrue("string" === gettype($variable), $errorMessage);
+        static::isTrue("" != $variable, $errorMessage);
+    }
+
     public static function areArraysEqual(array $a1, array $a2, string $errorMessage): void {
         static::notNull($a1, '$a1 is null variable');
         static::notNull($a2, '$a2 is null variable');
