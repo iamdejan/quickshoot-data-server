@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\GenericResponse;
 use App\User;
+use App\Utility\AssertUtil;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class UserController extends Controller
     {
         $response = new GenericResponse();
         try {
-            //TODO: Store user
+            AssertUtil::notBlank($request->input("name"), "Name should not be blank!");
+
             $user = User::create([
                 "name" => $request->input("name"),
                 "win_count" => self::ZERO,
