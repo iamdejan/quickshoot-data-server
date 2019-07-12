@@ -32,7 +32,6 @@ class UserController extends Controller
     {
         $response = new GenericResponse();
         try {
-            //TODO: Store user
             $user = User::create([
                 "name" => $request->input("name"),
                 "win_count" => self::ZERO,
