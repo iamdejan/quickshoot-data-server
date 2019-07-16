@@ -102,6 +102,7 @@ class UserController extends Controller
             $user->delete();
             unset($user);
             $response->setResult(null);
+            $response->setSuccess(true);
         } catch (Exception $exception) {
             $response->setSuccess(false);
             $response->setResult(null);
